@@ -1,0 +1,19 @@
+bshare_development:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: bshare_points
+  pool: 5
+  username: buzzinate_w
+  password: 
+  host: localhost
+
+bshare_points_development:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: bshare_points
+  pool: 5
+  username: buzzinate_w
+  password: 
+  host: localhost
