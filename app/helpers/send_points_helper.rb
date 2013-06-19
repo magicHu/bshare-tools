@@ -1,0 +1,2 @@
+module SendPointsHelper
+end

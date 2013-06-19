@@ -1,0 +1,26 @@
+
+<%= simple_form_for(:ad, :url => '/ads/search', :html => {:class => "form-search"}) do |f| %>
+
+  <%= f.input :keyword %>
+
+  <%= f.button :submit, value: 'search' %>
+<% end %>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Desc</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @ads.each do |ad| %>
+      <tr>
+        <td class="span4"><%= ad.NAME %></td>
+        <td><%= ad.DESCP %></td>
+        <td><%= link_to "编辑", edit_ad_path(ad), class: 'btn' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

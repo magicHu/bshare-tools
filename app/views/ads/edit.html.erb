@@ -1,0 +1,9 @@
+<h2 class="page-header">广告编辑</h2>
+
+<%= simple_form_for(@ad, :html => {:class => "form-search"}) do |f| %>
+
+  <%= f.input :NAME %>
+
+  <%= f.button :submit, value: 'Update', class: 'btn btn-info' %>
+  <%= link_to 'Back', ads_path, class: 'btn' %>
+<% end %>
