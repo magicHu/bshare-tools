@@ -31,25 +31,27 @@
   </head>
   <body>
 
-    <div class="navbar navbar-fluid-top">
+    <div class="navbar navbar-top">
       <div class="navbar-inner">
-        <div class="container-fluid">
+        <div class="container">
           <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
           <a class="brand" href="/">微积分</a>
-          <div class="container-fluid nav-collapse">
-            <ul class="nav pull-right">
+          <div class="container nav-collapse">
+            <ul class="nav">
+              <li><%= link_to "发微积分", '/send_points/index' %></li>
+              <li><%= link_to "广告管理", ads_path %></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
       </div>
     </div>
 
-    <div class="container-fluid">
-      <div class="row-fluid">
+    <div class="container">
+      <div class="row">
         <%= bootstrap_flash %>
         <%= yield %>
       </div>

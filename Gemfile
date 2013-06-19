@@ -8,6 +8,15 @@ gem 'rails', '3.2.12'
 
 gem 'mysql2'
 
+# form made
+gem 'simple_form'
+
+# http client
+gem 'httparty'
+
+# page
+gem 'kaminari'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -22,6 +31,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+
 
 group :development do
   gem 'pry-rails'
