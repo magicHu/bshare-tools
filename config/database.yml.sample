@@ -1,4 +1,3 @@
-
 bshare: &bshare
   adapter: mysql2
   encoding: utf8
@@ -19,23 +18,47 @@ bshare_points: &points
   password: 
   host: localhost
 
-development:
+bshare_points_development: &bshare_points_development
   <<: *points
+  username: buzzinate_w
+  password: 
+  host: localhost
+
+bshare_points_test: &bshare_points_test
+  <<: *points
+  username: buzzinate_w
+  password: 
+  host: localhost
+
+bshare_points_production: &bshare_points_production
+  <<: *points
+  username: buzzinate_w
+  password: 
+  host: localhost
 
 bshare_development: 
   <<: *bshare
+  username: buzzinate_w
+  password: 
+  host: localhost
 
 bshare_test: 
   <<: *bshare
+  username: buzzinate_w
+  password: 
+  host: localhost
 
 bshare_development:
   <<: *bshare
+  username: buzzinate_w
+  password: 
+  host: localhost
 
-bshare_points_development: 
-  <<: *points
+development:
+  <<: *bshare_points_development
 
-bshare_points_test: 
-  <<: *points
+test:
+  <<: *bshare_points_test
 
-bshare_points_development:
-  <<: *points
+production:
+  <<: *bshare_points_production

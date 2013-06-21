@@ -1,16 +1,28 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  def production_uuid
-    "3ffabe88-9c95-4f7b-a6d4-a6c14c61ba03"
+  def uuid
+    if Rails.env.production?
+      "3ffabe88-9c95-4f7b-a6d4-a6c14c61ba03"
+    else
+      "0e3a49ed-0522-470c-9df6-041a2ac62259"
+    end
   end
 
-  def production_secret
-    "0c79d908-53bf-46ca-ad5a-79e9105d1408"
+  def secret
+    if Rails.env.production?
+      "0c79d908-53bf-46ca-ad5a-79e9105d1408"
+    else
+      "74e81a05-a738-4c1a-b6e7-eaa0f3c3bf30"
+    end
   end
 
-  def api_base_url
-    "http://points.bshare.cn/api/"
+  def points_base_url
+    if Rails.env.production?
+      "http://points.bshare.local/bshare_points/"
+    else
+      "http://points.bshare.cn/"
+    end
   end
 
   def sign(params, secret)
@@ -19,8 +31,9 @@ class ApplicationController < ActionController::Base
   end
 
   def params_to_sign_str(params)
-    params_str = ''
     params = params.sort {|x, y| x.to_s <=> y.to_s }
+
+    params_str = ''
     params.each { |key, value|  params_str << key.to_s << "=" << value.to_s}
     params_str
   end
