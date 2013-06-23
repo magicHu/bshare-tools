@@ -11,6 +11,10 @@ class AdsController < ApplicationController
     end
   end
 
+  def show
+    @ad = Ad.find(params[:id])
+  end
+
   def edit
     @ad = Ad.find(params[:id])
   end
@@ -19,6 +23,10 @@ class AdsController < ApplicationController
     @ad = Ad.find(params[:id])
 
     
+  end
+
+  def records
+    @record = AdUserRecord.find(:AD_ID => params[id])
   end
 
 end

@@ -25,6 +25,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def refreshCache(cache_key)
+    HTTParty.get("#{points_base_url}/api/clearCached.json?uuid=#{uuid}&names=#{cache_key}"
+  end
+
   def sign(params, secret)
     @sign_str = params_to_sign_str(params) + secret
     return Digest::MD5.hexdigest(@sign_str)

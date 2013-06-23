@@ -1,6 +1,8 @@
 BsharePoints::Application.routes.draw do
 
-  resources :ads
+  resources :ads do
+    resources :ad_user_records
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
