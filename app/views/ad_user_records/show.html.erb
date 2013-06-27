@@ -1,0 +1,43 @@
+<%- model_class = AdUserRecord -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:ID) %>:</strong></dt>
+  <dd><%= @ad_user_record.ID %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:BRANCH_ID) %>:</strong></dt>
+  <dd><%= @ad_user_record.BRANCH_ID %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:AD_ID) %>:</strong></dt>
+  <dd><%= @ad_user_record.AD_ID %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:USER_ID) %>:</strong></dt>
+  <dd><%= @ad_user_record.USER_ID %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:USER_IP) %>:</strong></dt>
+  <dd><%= @ad_user_record.USER_IP %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:POINTS) %>:</strong></dt>
+  <dd><%= @ad_user_record.POINTS %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:TRANS_STATUS) %>:</strong></dt>
+  <dd><%= @ad_user_record.TRANS_STATUS %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:OUT_BIZNO) %>:</strong></dt>
+  <dd><%= @ad_user_record.OUT_BIZNO %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:OUT_USER_ID) %>:</strong></dt>
+  <dd><%= @ad_user_record.OUT_USER_ID %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:DEDUCT_TYPE) %>:</strong></dt>
+  <dd><%= @ad_user_record.DEDUCT_TYPE %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:REASON) %>:</strong></dt>
+  <dd><%= @ad_user_record.REASON %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:INSERT_TIME) %>:</strong></dt>
+  <dd><%= @ad_user_record.INSERT_TIME %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              ad_user_records_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_ad_user_record_path(@ad_user_record), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              ad_user_record_path(@ad_user_record),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

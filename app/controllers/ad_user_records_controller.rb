@@ -1,18 +1,26 @@
 class AdUserRecordsController < ApplicationController
   def index
-    @ad_user_records = AdUseRecord.find(:AD_ID => params[:ad_id]).page(params[:page])
+    @ad = Ad.find(params[:ad_id])
+    @ad_user_records = AdUserRecord.where(:AD_ID => params[:ad_id]).page(params[:page])
   end
 
   def new
-    @ad_user_record = AdUseRecord.build(:AD_ID => params[:ad_id])
+    @ad = Ad.find(params[:ad_id])
+    @ad_user_record = AdUserRecord.new(:AD_ID => @ad.id)
+  end
+
+  def search
+    @ad = Ad.find(params[:ad_id])
+    @ad_user_records = AdUserRecord.select([:USER_ID, :ID]).where("USER_ID in ('#{params[:user_ids]}')").group("USER_ID").minimum(:ID)
+
   end
 
   def create
     @ad = Ad.find(params[:ad_id])
-    @ad_user_record = @ad.ad_user_records.build(params[:ad_user_record])
+    @ad_user_record = AdUserRecord.new(params[:ad_user_record])
 
     if @ad_user_record.save
-      redirect_to action: index, notice: "create ad user record success"
+      redirect_to ad_ad_user_records_url(@ad), notice: "create ad user record success"
     else
       render_to action: new
     end

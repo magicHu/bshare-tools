@@ -1,5 +1,44 @@
-<h2 class="page-header">广告管理</h2>
+<%- model_class = Ad -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %>
+    <small><%= link_to "New", new_ad_path, class: "btn btn-primary" %></small>
 
-<%= render partial: 'ads' %>
+    <form action="/ads/search" class="form-search pull-right">
+      <input type="text" class="input-medium search-query" name="keyword">
+      <button type="submit" class="btn">Search</button>
+    </form>
+  </h1>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:ID) %></th>
+      <th><%= model_class.human_attribute_name(:BRANCH_ID) %></th>
+      <th><%= model_class.human_attribute_name(:BR_ADID) %></th>
+      <th><%= model_class.human_attribute_name(:PARENT_ID) %></th>
+      <th><%= model_class.human_attribute_name(:NAME) %></th>
+      <th><%= model_class.human_attribute_name(:NICK_NAME) %></th>
+      <th><%= model_class.human_attribute_name(:DESCP) %></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @ads.each do |ad| %>
+      <tr>
+        <td><%= ad.ID %></td>
+        <td><%= ad.BRANCH_ID %></td>
+        <td><%= ad.BR_ADID %></td>
+        <td><%= ad.PARENT_ID %></td>
+        <td><%= ad.NAME %></td>
+        <td><%= ad.NICK_NAME %></td>
+        <td><%= ad.DESCP %></td>
+        <td>
+          <%= link_to "show", ad, :class => 'btn btn-primary' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <%= paginate @ads %>

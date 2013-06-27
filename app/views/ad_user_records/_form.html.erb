@@ -1,0 +1,19 @@
+<%= simple_form_for [@ad, @ad_user_record], :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :ID %>
+  <%= f.input :BRANCH_ID %>
+  <%= f.input :AD_ID %>
+  <%= f.input :USER_ID %>
+  <%= f.input :USER_IP %>
+  <%= f.input :POINTS %>
+  <%= f.input :TRANS_STATUS %>
+  <%= f.input :OUT_BIZNO %>
+  <%= f.input :OUT_USER_ID %>
+  <%= f.input :DEDUCT_TYPE %>
+  <%= f.input :REASON %>
+  <%= f.input :INSERT_TIME %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                ad_ad_user_records_path(@ad), :class => 'btn' %>
+  </div>
+<% end %>

@@ -1,2 +1,58 @@
-<h1>AdUserRecords#index</h1>
-<p>Find me in app/views/ad_user_records/index.html.erb</p>
+<%- model_class = AdUserRecord -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %>
+    
+    <%= link_to t('.new', :default => t("helpers.links.new")),
+            new_ad_ad_user_record_path(@ad),
+            :class => 'btn' %>
+    <%= link_to "Back", @ad, :class => 'btn' %>
+
+
+  </h1>
+</div>
+
+<form action="<%= search_ad_ad_user_records_path(@ad) %>" class="form-search">
+  <textarea name="user_ids" cols="100" rows="10" class="input-xxlarge"></textarea>
+  <button type="submit" class="btn btn-large btn-info">Search</button>
+</form>
+
+Total count: <span class="badge badge-important"><%= @ad_user_records.total_count %></span>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:ID) %></th>
+      <th><%= model_class.human_attribute_name(:BRANCH_ID) %></th>
+      <th><%= model_class.human_attribute_name(:AD_ID) %></th>
+      <th><%= model_class.human_attribute_name(:USER_ID) %></th>
+      <th><%= model_class.human_attribute_name(:USER_IP) %></th>
+      <th><%= model_class.human_attribute_name(:POINTS) %></th>
+      <th><%= model_class.human_attribute_name(:TRANS_STATUS) %></th>
+      <th><%= model_class.human_attribute_name(:OUT_BIZNO) %></th>
+      <th><%= model_class.human_attribute_name(:OUT_USER_ID) %></th>
+      <th><%= model_class.human_attribute_name(:DEDUCT_TYPE) %></th>
+      <th><%= model_class.human_attribute_name(:REASON) %></th>
+      <th><%= model_class.human_attribute_name(:INSERT_TIME) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @ad_user_records.each do |ad_user_record| %>
+      <tr>
+        <td><%= ad_user_record.ID %></td>
+        <td><%= ad_user_record.BRANCH_ID %></td>
+        <td><%= ad_user_record.AD_ID %></td>
+        <td><%= ad_user_record.USER_ID %></td>
+        <td><%= ad_user_record.USER_IP %></td>
+        <td><%= ad_user_record.POINTS %></td>
+        <td><%= ad_user_record.TRANS_STATUS %></td>
+        <td><%= ad_user_record.OUT_BIZNO %></td>
+        <td><%= ad_user_record.OUT_USER_ID %></td>
+        <td><%= ad_user_record.DEDUCT_TYPE %></td>
+        <td><%= ad_user_record.REASON %></td>
+        <td><%= ad_user_record.INSERT_TIME %></td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

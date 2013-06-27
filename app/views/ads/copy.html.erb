@@ -1,0 +1,41 @@
+<%= simple_form_for @ad, :url => new_ad_path, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :ID %>
+  <%= f.input :BRANCH_ID %>
+  <%= f.input :BR_ADID %>
+  <%= f.input :PARENT_ID %>
+  <%= f.input :LINK %>
+  <%= f.input :IMAGE_URL, :input_html => { :class => "input-xxlarge" } %>
+  <%= f.input :BACK_IMAGE, :input_html => { :class => "input-xxlarge" } %>
+  <%= f.input :NICK_IMAGE, :input_html => { :class => "input-xxlarge" } %>
+  <%= f.input :NAME %>
+  <%= f.input :NICK_NAME %>
+  <%= f.input :AD_CATEGORY %>
+  <%= f.input :TEMPLATE %>
+  <%= f.input :DESCP, as: "text", :input_html => { :rows => 6, :class => "input-xxlarge" } %>
+  <%= f.input :BILL_TYPE %>
+  <%= f.input :DEDUCT_TYPE %>
+  <%= f.input :START_DATE, as: "string",  :input_html => { class: "datepicker", "data-date-format" => "yyyy-mm-dd" } %>
+  <%= f.input :END_DATE, as: "string",  :input_html => { class: "datepicker", "data-date-format" => "yyyy-mm-dd" } %>
+  <%= f.input :AUDIT_DATE, as: "string",  :input_html => { class: "datepicker", "data-date-format" => "yyyy-mm-dd" } %>
+  <%= f.input :REVENUE %>
+  <%= f.input :POINTS %>
+  <%= f.input :TOTAL_POINTS %>
+  <%= f.input :SHARING_RATE %>
+  <%= f.input :IP_ONCE %>
+  <%= f.input :DISPLAY %>
+  <%= f.input :USER_TIME %>
+  <%= f.input :CHECK_BYDAY %>
+  <%= f.input :USER_AREA %>
+  <%= f.input :AD_SCRIPT %>
+  <%= f.input :MAX_USER %>
+  <%= f.input :JOIN_USER %>
+  <%= f.input :REMARK, as: "text", :input_html => { :rows => 6, :class => "input-xxlarge" } %>
+  <%= f.input :ACTIVITY_ID %>
+  <%= f.input :AWARD_LIMIT %>
+  <%= f.input :INSERT_TIME %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                ads_path, :class => 'btn' %>
+  </div>
+<% end %>

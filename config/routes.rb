@@ -1,7 +1,21 @@
 BsharePoints::Application.routes.draw do
 
+  get "adc2013/index"
+
   resources :ads do
-    resources :ad_user_records
+    resources :ad_user_records do
+      collection do
+        get "search"
+      end
+    end
+
+    member do
+      get "copy"
+    end
+
+    collection do
+      get "search"
+    end
   end
 
   # The priority is based upon order of creation:
@@ -53,7 +67,7 @@ BsharePoints::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'home#index'
+  root :to => 'adc2013#index'
 
   # See how all your routes lay out with "rake routes"
 

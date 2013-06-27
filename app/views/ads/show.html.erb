@@ -1,0 +1,84 @@
+<%- model_class = Ad -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %>
+
+
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              ads_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_ad_path(@ad), :class => 'btn' %>
+  <%= link_to "copy", copy_ad_path(@ad), :class => 'btn' %>
+  <%= link_to "ad user records", ad_ad_user_records_path(@ad), :class => 'btn' %>
+</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:ID) %>:</strong></dt>
+  <dd><%= @ad.ID %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:BRANCH_ID) %>:</strong></dt>
+  <dd><%= @ad.BRANCH_ID %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:BR_ADID) %>:</strong></dt>
+  <dd><%= @ad.BR_ADID %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:PARENT_ID) %>:</strong></dt>
+  <dd><%= @ad.PARENT_ID %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:LINK) %>:</strong></dt>
+  <dd><%= @ad.LINK %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:IMAGE_URL) %>:</strong></dt>
+  <dd><%= @ad.IMAGE_URL %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:BACK_IMAGE) %>:</strong></dt>
+  <dd><%= @ad.BACK_IMAGE %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:NICK_IMAGE) %>:</strong></dt>
+  <dd><%= @ad.NICK_IMAGE %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:NAME) %>:</strong></dt>
+  <dd><%= @ad.NAME %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:NICK_NAME) %>:</strong></dt>
+  <dd><%= @ad.NICK_NAME %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:AD_CATEGORY) %>:</strong></dt>
+  <dd><%= @ad.AD_CATEGORY %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:TEMPLATE) %>:</strong></dt>
+  <dd><%= @ad.TEMPLATE %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:DESCP) %>:</strong></dt>
+  <dd><%= @ad.DESCP %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:BILL_TYPE) %>:</strong></dt>
+  <dd><%= @ad.BILL_TYPE %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:DEDUCT_TYPE) %>:</strong></dt>
+  <dd><%= @ad.DEDUCT_TYPE %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:START_DATE) %>:</strong></dt>
+  <dd><%= @ad.START_DATE %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:END_DATE) %>:</strong></dt>
+  <dd><%= @ad.END_DATE %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:AUDIT_DATE) %>:</strong></dt>
+  <dd><%= @ad.AUDIT_DATE %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:REVENUE) %>:</strong></dt>
+  <dd><%= @ad.REVENUE %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:POINTS) %>:</strong></dt>
+  <dd><%= @ad.POINTS %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:TOTAL_POINTS) %>:</strong></dt>
+  <dd><%= @ad.TOTAL_POINTS %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:SHARING_RATE) %>:</strong></dt>
+  <dd><%= @ad.SHARING_RATE %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:IP_ONCE) %>:</strong></dt>
+  <dd><%= @ad.IP_ONCE %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:DISPLAY) %>:</strong></dt>
+  <dd><%= @ad.DISPLAY %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:USER_TIME) %>:</strong></dt>
+  <dd><%= @ad.USER_TIME %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:CHECK_BYDAY) %>:</strong></dt>
+  <dd><%= @ad.CHECK_BYDAY %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:USER_AREA) %>:</strong></dt>
+  <dd><%= @ad.USER_AREA %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:AD_SCRIPT) %>:</strong></dt>
+  <dd><%= @ad.AD_SCRIPT %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:MAX_USER) %>:</strong></dt>
+  <dd><%= @ad.MAX_USER %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:JOIN_USER) %>:</strong></dt>
+  <dd><%= @ad.JOIN_USER %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:REMARK) %>:</strong></dt>
+  <dd><%= @ad.REMARK %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:ACTIVITY_ID) %>:</strong></dt>
+  <dd><%= @ad.ACTIVITY_ID %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:AWARD_LIMIT) %>:</strong></dt>
+  <dd><%= @ad.AWARD_LIMIT %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:INSERT_TIME) %>:</strong></dt>
+  <dd><%= @ad.INSERT_TIME %></dd>
+</dl>
