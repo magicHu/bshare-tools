@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 BsharePoints::Application.routes.draw do
 
   get "adc2013/index"

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class BshareModel < ActiveRecord::Base
   self.abstract_class = true
 

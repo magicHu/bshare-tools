@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Ad < BsharePointsModel
 
   set_table_name "points_ad"

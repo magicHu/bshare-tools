@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AdUserRecord < BsharePointsModel
 
   self.table_name = "points_ad_user_record"

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AdUserRecordsController < ApplicationController
   def index
     @ad = Ad.find(params[:ad_id])
