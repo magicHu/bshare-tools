@@ -2,6 +2,7 @@ class AdUserRecordsController < ApplicationController
   def index
     @ad = Ad.find(params[:ad_id])
     @ad_user_records = AdUserRecord.where(:AD_ID => params[:ad_id]).page(params[:page])
+    @has_get_points_record_count = AdUserRecord.where(:AD_ID => params[:ad_id], :TRANS_STATUS => 3).count
   end
 
   def new
@@ -14,6 +15,7 @@ class AdUserRecordsController < ApplicationController
 
     @user_ids = params[:user_ids]
     @ad_user_records = AdUserRecord.select([:USER_ID, :ID]).where("USER_ID in ('#{@user_ids}')").group("USER_ID").minimum(:ID)
+    @has_get_points_record_count = AdUserRecord.where(:AD_ID => params[:ad_id], :TRANS_STATUS => 3).count
 
     @send_points_url = send_points_url(@ad_user_records.values)
   end

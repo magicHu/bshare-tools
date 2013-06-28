@@ -3,7 +3,7 @@
   <%= f.input :BRANCH_ID %>
   <%= f.input :BR_ADID %>
   <%= f.input :PARENT_ID %>
-  <%= f.input :LINK, label: "活动链接" %>
+  <%= f.input :LINK, label: "活动链接", :input_html => { :class => "input-xxlarge" } %>
   <%= f.input :IMAGE_URL, label: "大图", :input_html => { :class => "input-xxlarge" } %>
   <%= f.input :BACK_IMAGE, label: "背景图", :input_html => { :class => "input-xxlarge" } %>
   <%= f.input :NICK_IMAGE, label: "小图", :input_html => { :class => "input-xxlarge" } %>
@@ -13,21 +13,21 @@
   <%= f.input :TEMPLATE, label: "模板", collection: Ad.ad_template_enum %>
   <%= f.input :DESCP, as: "text", label: "说明", :input_html => { :rows => 6, :class => "input-xxlarge" } %>
   <%= f.input :BILL_TYPE, label: "广告类型", collection: Ad.bill_type_enum %>
-  <%= f.input :DEDUCT_TYPE, as: "integer" %>
-  <%= f.input :START_DATE, as: "string",  :input_html => { class: "datepicker", "data-date-format" => "yyyy-mm-dd" } %>
-  <%= f.input :END_DATE, as: "string",  :input_html => { class: "datepicker", "data-date-format" => "yyyy-mm-dd" } %>
-  <%= f.input :AUDIT_DATE, as: "string",  :input_html => { class: "datepicker", "data-date-format" => "yyyy-mm-dd" } %>
+  <%= f.input :DEDUCT_TYPE, label: "扣款类型", collection: Ad.duduct_type_enum %>
+  <%= f.input :START_DATE, label: "开始时间", as: "string",  :input_html => { class: "datepicker", "data-date-format" => "yyyy-mm-dd" } %>
+  <%= f.input :END_DATE, label: "结束时间", as: "string",  :input_html => { class: "datepicker", "data-date-format" => "yyyy-mm-dd" } %>
+  <%= f.input :AUDIT_DATE, label: "审核时间", as: "string",  :input_html => { class: "datepicker", "data-date-format" => "yyyy-mm-dd" } %>
   <%= f.input :REVENUE %>
-  <%= f.input :POINTS %>
-  <%= f.input :TOTAL_POINTS %>
-  <%= f.input :SHARING_RATE %>
-  <%= f.input :IP_ONCE %>
-  <%= f.input :DISPLAY %>
-  <%= f.input :USER_TIME %>
+  <%= f.input :POINTS, label: "奖励积分" %>
+  <%= f.input :TOTAL_POINTS, label: "总奖励积分" %>
+  <%= f.input :SHARING_RATE, label: "分成比例" %>
+  <%= f.input :IP_ONCE, label: "一个IP是否只能参加一次" %>
+  <%= f.input :DISPLAY, label: "是否显示在活动列表里" %>
+  <%= f.input :USER_TIME, label: "每个用户参与的次数" %>
   <%= f.input :CHECK_BYDAY %>
   <%= f.input :USER_AREA %>
   <%= f.input :AD_SCRIPT %>
-  <%= f.input :MAX_USER %>
+  <%= f.input :MAX_USER, label: "最大用户参与数" %>
   <%= f.input :JOIN_USER %>
   <%= f.input :REMARK, as: "text", label: "注意事项", :input_html => { :rows => 6, :class => "input-xxlarge" } %>
   <%= f.input :ACTIVITY_ID %>

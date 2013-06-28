@@ -5,20 +5,20 @@
     <%= link_to t('.new', :default => t("helpers.links.new")),
             new_ad_ad_user_record_path(@ad),
             :class => 'btn' %>
-    <%= link_to "Back", @ad, :class => 'btn' %>
+    <%= link_to "Back", ad_ad_user_records_path(@ad), :class => 'btn' %>
 
 
   </h1>
 </div>
 
-<form action="<%= search_ad_ad_user_records_path(@ad) %>" class="form-search">
-  <textarea name="user_ids" cols="100" rows="10" class="input-xxlarge"></textarea>
-  <button type="submit" class="btn btn-large btn-info">Search</button>
-</form>
+<div class="row">
+记录数: <span class="badge badge-important"><%= @ad_user_records.count %></span>
+已获得奖励的用户数: <span class="badge badge-important"><%= @has_get_points_record_count %></span>
 
-Total count: <span class="badge badge-important"><%= @ad_user_records.count %></span>
 
-<%= link_to "send points", @send_points_url, class: "btn btn-info", target: "_blank" %>
+<%= link_to "给下面用户列表发积分", @send_points_url, class: "btn btn-danger", target: "_blank" %>
+</div>
+
 
 <table class="table table-striped">
   <thead>

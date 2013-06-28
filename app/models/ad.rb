@@ -19,4 +19,9 @@ class Ad < BsharePointsModel
     @@BILL_TYPE
   end
 
+
+  @@DEDUCT_TYPE = { "普通账户" => 2, "信用账户" => 1, "活动账户" => 3 }
+  def self.duduct_type_enum
+    @@DEDUCT_TYPE
+  end
 end

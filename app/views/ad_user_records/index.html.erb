@@ -5,7 +5,7 @@
     <%= link_to t('.new', :default => t("helpers.links.new")),
             new_ad_ad_user_record_path(@ad),
             :class => 'btn' %>
-    <%= link_to "Back", @ad, :class => 'btn' %>
+    <%= link_to "Back", ads_url, :class => 'btn' %>
 
 
   </h1>
@@ -16,7 +16,10 @@
   <button type="submit" class="btn btn-large btn-info">Search</button>
 </form>
 
-Total count: <span class="badge badge-important"><%= @ad_user_records.total_count %></span>
+<div class="row">
+总参与记录数: <span class="badge badge-important"><%= @ad_user_records.total_count %></span>
+已获得奖励的用户数: <span class="badge badge-important"><%= @has_get_points_record_count %></span>
+</div>
 
 <table class="table table-striped">
   <thead>
