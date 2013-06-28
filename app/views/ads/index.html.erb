@@ -34,7 +34,8 @@
         <td><%= ad.NICK_NAME %></td>
         <td><%= ad.DESCP %></td>
         <td>
-          <%= link_to "show", ad, :class => 'btn btn-primary' %>
+          <%= link_to "详情", ad, :class => 'btn btn-primary' %>
+          <%= link_to "参与记录", ad_ad_user_records_path(ad), :class => 'btn' %>
         </td>
       </tr>
     <% end %>

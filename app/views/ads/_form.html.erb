@@ -3,17 +3,17 @@
   <%= f.input :BRANCH_ID %>
   <%= f.input :BR_ADID %>
   <%= f.input :PARENT_ID %>
-  <%= f.input :LINK %>
-  <%= f.input :IMAGE_URL, :input_html => { :class => "input-xxlarge" } %>
-  <%= f.input :BACK_IMAGE, :input_html => { :class => "input-xxlarge" } %>
-  <%= f.input :NICK_IMAGE, :input_html => { :class => "input-xxlarge" } %>
+  <%= f.input :LINK, label: "活动链接" %>
+  <%= f.input :IMAGE_URL, label: "大图", :input_html => { :class => "input-xxlarge" } %>
+  <%= f.input :BACK_IMAGE, label: "背景图", :input_html => { :class => "input-xxlarge" } %>
+  <%= f.input :NICK_IMAGE, label: "小图", :input_html => { :class => "input-xxlarge" } %>
   <%= f.input :NAME %>
   <%= f.input :NICK_NAME %>
-  <%= f.input :AD_CATEGORY %>
-  <%= f.input :TEMPLATE %>
-  <%= f.input :DESCP, as: "text", :input_html => { :rows => 6, :class => "input-xxlarge" } %>
-  <%= f.input :BILL_TYPE %>
-  <%= f.input :DEDUCT_TYPE %>
+  <%= f.input :AD_CATEGORY, collection: Ad.ad_category_enum %>
+  <%= f.input :TEMPLATE, label: "模板", collection: Ad.ad_template_enum %>
+  <%= f.input :DESCP, as: "text", label: "说明", :input_html => { :rows => 6, :class => "input-xxlarge" } %>
+  <%= f.input :BILL_TYPE, label: "广告类型", collection: Ad.bill_type_enum %>
+  <%= f.input :DEDUCT_TYPE, as: "integer" %>
   <%= f.input :START_DATE, as: "string",  :input_html => { class: "datepicker", "data-date-format" => "yyyy-mm-dd" } %>
   <%= f.input :END_DATE, as: "string",  :input_html => { class: "datepicker", "data-date-format" => "yyyy-mm-dd" } %>
   <%= f.input :AUDIT_DATE, as: "string",  :input_html => { class: "datepicker", "data-date-format" => "yyyy-mm-dd" } %>
@@ -29,7 +29,7 @@
   <%= f.input :AD_SCRIPT %>
   <%= f.input :MAX_USER %>
   <%= f.input :JOIN_USER %>
-  <%= f.input :REMARK, as: "text", :input_html => { :rows => 6, :class => "input-xxlarge" } %>
+  <%= f.input :REMARK, as: "text", label: "注意事项", :input_html => { :rows => 6, :class => "input-xxlarge" } %>
   <%= f.input :ACTIVITY_ID %>
   <%= f.input :AWARD_LIMIT %>
   <%= f.input :INSERT_TIME %>

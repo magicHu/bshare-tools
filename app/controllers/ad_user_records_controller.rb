@@ -11,9 +11,13 @@ class AdUserRecordsController < ApplicationController
 
   def search
     @ad = Ad.find(params[:ad_id])
-    @ad_user_records = AdUserRecord.select([:USER_ID, :ID]).where("USER_ID in ('#{params[:user_ids]}')").group("USER_ID").minimum(:ID)
 
+    @user_ids = params[:user_ids]
+    @ad_user_records = AdUserRecord.select([:USER_ID, :ID]).where("USER_ID in ('#{@user_ids}')").group("USER_ID").minimum(:ID)
+
+    @send_points_url = send_points_url(@ad_user_records.values)
   end
+
 
   def create
     @ad = Ad.find(params[:ad_id])
@@ -26,10 +30,11 @@ class AdUserRecordsController < ApplicationController
     end
   end
 
-  def send_points
-    args = { :uuid => uuid, :ts => Time.now.to_i * 1000, :ids => params[:id] }
+  private
+  def send_points_url(ad_user_record_ids)
+    args = { :uuid => uuid, :ts => Time.now.to_i * 1000, :ids => ad_user_record_ids.join(',') }
     args[:secret] = sign(args, secret)
 
-    redirect_to "#{points_base_url}/api/refresAR.json?" + args.map {|key, value| "#{key}=#{value}"}.join('&')
+    "#{points_base_url}/api/refresAR.json?" + args.map {|key, value| "#{key}=#{value}"}.join('&')
   end
 end
