@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class Account < BsharePointsModel
 
-  set_table_name "points_account"
+  self.table_name = "points_account"
 
 end

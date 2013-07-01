@@ -1,6 +1,7 @@
 # -*- encoding : utf-8 -*-
 class AdsController < ApplicationController
   def index
+    binding.pry
     @ads = Ad.limit(10)
   end
 
@@ -33,6 +34,7 @@ class AdsController < ApplicationController
   end
 
   def create
+    binding.pry
     @ad = Ad.new(params[:ad])
 
     respond_to do |format|
