@@ -1,14 +1,14 @@
 # -*- encoding : utf-8 -*-
 class AdsController < ApplicationController
   def index
-    @ads = Ad.page(params[:pages]).per(10)
+    @ads = Ad.limit(10)
   end
 
   def search
     if params[:keyword]
-      @ads = Ad.where("name like '%#{params[:keyword]}%'").page(params[:pages]).per(10)
+      @ads = Ad.where("name like '%#{params[:keyword]}%'")
     else
-      @ads = Ad.page(params[:pages]).per(10)
+      @ads = Ad.limit(10)
     end
 
     render action: "index"
