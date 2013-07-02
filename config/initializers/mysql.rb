@@ -1,0 +1,1 @@
+ActiveRecord::ConnectionAdapters::Mysql2Adapter.emulate_booleans = false

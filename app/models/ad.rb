@@ -3,7 +3,7 @@ class Ad < BsharePointsModel
 
   self.table_name = "points_ad"
 
-  default_scope :order => 'INSERT_TIME desc'
+  default_scope :order => 'id desc'
 
   attr_accessible :ID, :BRANCH_ID, :BR_ADID, :PARENT_ID, :LINK, :IMAGE_URL, :BACK_IMAGE, :NICK_IMAGE, :NAME, :NICK_NAME, :AD_CATEGORY, :TEMPLATE, :DESCP, :BILL_TYPE, :DEDUCT_TYPE, :START_DATE, :END_DATE, :AUDIT_DATE, :REVENUE, :POINTS, :TOTAL_POINTS, :SHARING_RATE, :IP_ONCE, :DISPLAY, :USER_TIME, :CHECK_BYDAY, :USER_AREA, :AD_SCRIPT, :MAX_USER, :JOIN_USER, :REMARK, :ACTIVITY_ID, :AWARD_LIMIT, :INSERT_TIME
 

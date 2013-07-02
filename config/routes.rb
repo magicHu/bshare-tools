@@ -12,6 +12,7 @@ BsharePoints::Application.routes.draw do
 
     member do
       get "copy"
+      get "delete", to: :destroy
     end
 
     collection do

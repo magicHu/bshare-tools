@@ -1,7 +1,6 @@
 # -*- encoding : utf-8 -*-
 class AdsController < ApplicationController
   def index
-    binding.pry
     @ads = Ad.limit(10)
   end
 
@@ -24,9 +23,9 @@ class AdsController < ApplicationController
   end
 
   def copy
-    @ad = Ad.find(params[:id])
-    @ad.ID = nil
+    @ad = Ad.find(params[:id]).dup
 
+    render action: "new"
   end
 
   def edit
@@ -34,7 +33,6 @@ class AdsController < ApplicationController
   end
 
   def create
-    binding.pry
     @ad = Ad.new(params[:ad])
 
     respond_to do |format|
@@ -62,5 +60,13 @@ class AdsController < ApplicationController
     end
   end
 
+  def destroy
+    @ad = Ad.find(params[:id])
+    @ad.destroy
 
+    respond_to do |format|
+      format.html { redirect_to ads_url, notice: 'ad was successfully destroy.' }
+      format.json { head :no_content }
+    end
+  end
 end

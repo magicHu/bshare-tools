@@ -5,7 +5,7 @@
   <%= f.input :USER_ID %>
   <%= f.input :USER_IP %>
   <%= f.input :POINTS %>
-  <%= f.input :TRANS_STATUS %>
+  <%= f.input :TRANS_STATUS, collection: AdUserRecord.trans_status_enum, selected: 1 %>
   <%= f.input :OUT_BIZNO %>
   <%= f.input :OUT_USER_ID %>
   <%= f.input :DEDUCT_TYPE %>

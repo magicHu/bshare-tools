@@ -4,7 +4,7 @@
     <small><%= link_to "New", new_ad_path, class: "btn btn-primary" %></small>
 
     <form action="/ads/search" class="form-search pull-right">
-      <input type="text" class="input-medium search-query" name="keyword">
+      <input type="text" class="input-medium search-query" name="keyword" prompt="请输入活动名">
       <button type="submit" class="btn">Search</button>
     </form>
   </h1>
@@ -20,7 +20,7 @@
       <th><%= model_class.human_attribute_name(:NAME) %></th>
       <th><%= model_class.human_attribute_name(:NICK_NAME) %></th>
       <th><%= model_class.human_attribute_name(:DESCP) %></th>
-      <th></th>
+      <th class="span2"></th>
     </tr>
   </thead>
   <tbody>

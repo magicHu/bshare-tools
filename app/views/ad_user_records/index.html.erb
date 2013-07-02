@@ -1,6 +1,6 @@
 <%- model_class = AdUserRecord -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %>
+  <h1><%= @ad.NAME %> 用户记录
     
     <%= link_to t('.new', :default => t("helpers.links.new")),
             new_ad_ad_user_record_path(@ad),
