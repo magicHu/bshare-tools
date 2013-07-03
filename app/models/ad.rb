@@ -27,4 +27,8 @@ class Ad < BsharePointsModel
   def self.duduct_type_enum
     @@DEDUCT_TYPE
   end
+
+  def cps?
+    self.BILL_TYPE == 3
+  end
 end

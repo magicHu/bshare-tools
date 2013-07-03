@@ -1,0 +1,43 @@
+<%- model_class = AdFeedback -%>
+<div class="page-header">
+  <h1><%= @ad.NAME %> CPS Feedback
+    
+    <%= link_to 'New', new_ad_ad_feedback_path(@ad), :class => 'btn btn-primary' %>
+  </h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:ID) %></th>
+      <th><%= model_class.human_attribute_name(:FEED_TIME) %></th>
+      <th>bshare用户ID</th>
+      <th>合作方用户ID</th>
+      <th>佣金</th>
+      <th>总价</th>
+      <th>外部交易号</th>
+      <th>订单状态</th>
+      <th>备注</th>
+      <th>记录时间</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @ad_feedbacks.each do |ad_feedback| %>
+      <tr>
+        <td><%= ad_feedback.ID %></td>
+        <td><%= ad_feedback.FEED_TIME %></td>
+        <td><%= ad_feedback.JOIN_USERID %></td>
+        <td><%= ad_feedback.OTHER_USERID %></td>
+        <td><%= ad_feedback.COMM %></td>
+        <td><%= ad_feedback.TOTAL_PRICE %></td>
+        <td><%= ad_feedback.OUT_BIZNO %></td>
+        <td><%= ad_feedback.ORDER_STATUS %></td>
+        <td><%= ad_feedback.REMARK %></td>
+        <td><%= ad_feedback.INSERT_TIME %></td>
+        <td>
+          <%= link_to "详情", ad_ad_feedback_path(@ad, ad_feedback), :class => 'btn btn-primary' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

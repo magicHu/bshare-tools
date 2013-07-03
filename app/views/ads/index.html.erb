@@ -14,11 +14,7 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:ID) %></th>
-      <th><%= model_class.human_attribute_name(:BRANCH_ID) %></th>
-      <th><%= model_class.human_attribute_name(:BR_ADID) %></th>
-      <th><%= model_class.human_attribute_name(:PARENT_ID) %></th>
       <th><%= model_class.human_attribute_name(:NAME) %></th>
-      <th><%= model_class.human_attribute_name(:NICK_NAME) %></th>
       <th><%= model_class.human_attribute_name(:DESCP) %></th>
       <th class="span2"></th>
     </tr>
@@ -27,18 +23,20 @@
     <% @ads.each do |ad| %>
       <tr>
         <td><%= ad.ID %></td>
-        <td><%= ad.BRANCH_ID %></td>
-        <td><%= ad.BR_ADID %></td>
-        <td><%= ad.PARENT_ID %></td>
         <td><%= ad.NAME %></td>
-        <td><%= ad.NICK_NAME %></td>
         <td><%= ad.DESCP %></td>
         <td>
           <%= link_to "详情", ad, :class => 'btn' %>
           <%= link_to "复制", copy_ad_path(ad), :class => 'btn' %>
           <%= link_to "用户参与记录", ad_ad_user_records_path(ad), :class => 'btn btn-info' %>
+
+          <% if ad.cps? %>
+            <%= link_to "CPS Feedback", ad_ad_feedbacks_path(ad), :class => 'btn btn-primary' %>
+          <% end %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<%= paginate @ads %>

@@ -1,0 +1,14 @@
+<%= simple_form_for @bind_user_account, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :ID %>
+  <%= f.input :USER_ID %>
+  <%= f.input :BIND_ACCOUNT_TYPE, collection: BindUserAccount.account_type_enum, selected: 1 %>
+  <%= f.input :ACCOUNT_UID %>
+  <%= f.input :ACCOUNT_NAME %>
+  <%= f.input :CREATE_TIME %>
+  <%= f.input :UPDATE_TIME %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                bind_user_accounts_path, :class => 'btn' %>
+  </div>
+<% end %>

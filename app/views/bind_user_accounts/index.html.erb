@@ -1,0 +1,44 @@
+<%- model_class = BindUserAccount -%>
+<div class="page-header">
+  <h1>支付宝帐号
+    
+    <%= link_to t('.new', :default => t("helpers.links.new")),
+                new_bind_user_account_path,
+                :class => 'btn btn-primary' %>
+  </h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:ID) %></th>
+      <th><%= model_class.human_attribute_name(:USER_ID) %></th>
+      <th><%= model_class.human_attribute_name(:BIND_ACCOUNT_TYPE) %></th>
+      <th><%= model_class.human_attribute_name(:ACCOUNT_UID) %></th>
+      <th><%= model_class.human_attribute_name(:ACCOUNT_NAME) %></th>
+      <th><%= model_class.human_attribute_name(:CREATE_TIME) %></th>
+      <th><%= model_class.human_attribute_name(:UPDATE_TIME) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @bind_user_accounts.each do |bind_user_account| %>
+      <tr>
+        <td><%= bind_user_account.ID %></td>
+        <td><%= bind_user_account.USER_ID %></td>
+        <td><%= account_type_name(bind_user_account.BIND_ACCOUNT_TYPE) %></td>
+        <td><%= bind_user_account.ACCOUNT_UID %></td>
+        <td><%= bind_user_account.ACCOUNT_NAME %></td>
+        <td><%= bind_user_account.CREATE_TIME %></td>
+        <td><%= bind_user_account.UPDATE_TIME %></td>
+        <td>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      bind_user_account_path(bind_user_account),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

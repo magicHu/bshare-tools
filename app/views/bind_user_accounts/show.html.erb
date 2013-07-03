@@ -1,0 +1,33 @@
+<%- model_class = BindUserAccount -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:ID) %>:</strong></dt>
+  <dd><%= @bind_user_account.ID %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:USER_ID) %>:</strong></dt>
+  <dd><%= @bind_user_account.USER_ID %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:BIND_ACCOUNT_TYPE) %>:</strong></dt>
+  <dd><%= @bind_user_account.BIND_ACCOUNT_TYPE %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:ACCOUNT_UID) %>:</strong></dt>
+  <dd><%= @bind_user_account.ACCOUNT_UID %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:ACCOUNT_NAME) %>:</strong></dt>
+  <dd><%= @bind_user_account.ACCOUNT_NAME %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:CREATE_TIME) %>:</strong></dt>
+  <dd><%= @bind_user_account.CREATE_TIME %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:UPDATE_TIME) %>:</strong></dt>
+  <dd><%= @bind_user_account.UPDATE_TIME %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              bind_user_accounts_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_bind_user_account_path(@bind_user_account), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              bind_user_account_path(@bind_user_account),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

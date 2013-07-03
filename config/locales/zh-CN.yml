@@ -1,0 +1,8 @@
+zh-CN:
+  simple_form:
+    models:
+      AdFeedback:
+        JOIN_USERID: bshare用户ID
+    labels:
+      AdFeedback:
+        JOIN_USERID: bshare用户ID

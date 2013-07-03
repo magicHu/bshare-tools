@@ -1,15 +1,7 @@
 # -*- encoding : utf-8 -*-
 BsharePoints::Application.routes.draw do
 
-  get "adc2013/index"
-
   resources :ads do
-    resources :ad_user_records do
-      collection do
-        get "search"
-      end
-    end
-
     member do
       get "copy"
       get "delete", to: :destroy
@@ -18,7 +10,20 @@ BsharePoints::Application.routes.draw do
     collection do
       get "search"
     end
+
+    resources :ad_user_records do
+      collection do
+        get "search"
+      end
+    end
+
+    resources :ad_feedbacks do
+      
+    end
+
   end
+
+  resources :bind_user_accounts
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
