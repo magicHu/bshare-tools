@@ -23,7 +23,21 @@ BsharePoints::Application.routes.draw do
 
   end
 
-  resources :bind_user_accounts
+  resources :bind_user_accounts do
+    collection do
+      get 'search'
+    end
+  end
+
+  resources :points_users do
+    member do
+      get 'clear'
+    end
+
+    collection do
+      get 'search'
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

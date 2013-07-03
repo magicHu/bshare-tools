@@ -5,6 +5,11 @@
     <%= link_to t('.new', :default => t("helpers.links.new")),
                 new_bind_user_account_path,
                 :class => 'btn btn-primary' %>
+    
+    <form action="/bind_user_accounts/search" class="form-search pull-right">
+      <input type="text" class="input-medium search-query" name="keyword" prompt="请输入活动名">
+      <button type="submit" class="btn">Search</button>
+    </form>
   </h1>
 </div>
 <table class="table table-striped">
@@ -31,11 +36,11 @@
         <td><%= bind_user_account.CREATE_TIME %></td>
         <td><%= bind_user_account.UPDATE_TIME %></td>
         <td>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+          <%= link_to "解绑",
                       bind_user_account_path(bind_user_account),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-mini btn-danger' %>
+                      :class => 'btn btn-danger' %>
         </td>
       </tr>
     <% end %>

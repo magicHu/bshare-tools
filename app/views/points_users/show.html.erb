@@ -1,0 +1,63 @@
+<%- model_class = PointsUser -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:USER_ID) %>:</strong></dt>
+  <dd><%= @points_user.USER_ID %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:USER_NAME) %>:</strong></dt>
+  <dd><%= @points_user.USER_NAME %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:POINTS) %>:</strong></dt>
+  <dd><%= @points_user.POINTS %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:USED_POINTS) %>:</strong></dt>
+  <dd><%= @points_user.USED_POINTS %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:FROZEN_POINTS) %>:</strong></dt>
+  <dd><%= @points_user.FROZEN_POINTS %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:STATUS) %>:</strong></dt>
+  <dd><%= @points_user.STATUS %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:FROZEN_REASON) %>:</strong></dt>
+  <dd><%= @points_user.FROZEN_REASON %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:FROZEN_TIME) %>:</strong></dt>
+  <dd><%= @points_user.FROZEN_TIME %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:CONTACT_NAME) %>:</strong></dt>
+  <dd><%= @points_user.CONTACT_NAME %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:CONTACT_ADDRESS) %>:</strong></dt>
+  <dd><%= @points_user.CONTACT_ADDRESS %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:CONTACT_NO) %>:</strong></dt>
+  <dd><%= @points_user.CONTACT_NO %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:ZIP_CODE) %>:</strong></dt>
+  <dd><%= @points_user.ZIP_CODE %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:STATE) %>:</strong></dt>
+  <dd><%= @points_user.STATE %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:CITY) %>:</strong></dt>
+  <dd><%= @points_user.CITY %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:AVATAR) %>:</strong></dt>
+  <dd><%= @points_user.AVATAR %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:EMAILED) %>:</strong></dt>
+  <dd><%= @points_user.EMAILED %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:VERIFY_EMAIL) %>:</strong></dt>
+  <dd><%= @points_user.VERIFY_EMAIL %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:VERIFY_TIME) %>:</strong></dt>
+  <dd><%= @points_user.VERIFY_TIME %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:INVITE_CODE) %>:</strong></dt>
+  <dd><%= @points_user.INVITE_CODE %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:SOURCE_INVITE_CODE) %>:</strong></dt>
+  <dd><%= @points_user.SOURCE_INVITE_CODE %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:INVITE_REWARDED) %>:</strong></dt>
+  <dd><%= @points_user.INVITE_REWARDED %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:INSERT_TIME) %>:</strong></dt>
+  <dd><%= @points_user.INSERT_TIME %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              points_users_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_points_user_path(@points_user), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              points_user_path(@points_user),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

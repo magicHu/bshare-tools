@@ -8,6 +8,12 @@ class BindUserAccountsController < ApplicationController
     @bind_user_account = BindUserAccount.find(params[:id])
   end
 
+  def search
+    @bind_user_accounts = BindUserAccount.where("ACCOUNT_NAME like '#{params[:keyword]}%'")
+
+    render action: "index"
+  end
+
   def new
     @bind_user_account = BindUserAccount.new
   end

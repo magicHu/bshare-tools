@@ -1,0 +1,64 @@
+<%- model_class = PointsUser -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %>
+
+    
+    <form action="/points_users/search" class="form-search pull-right">
+      <input type="text" class="input-medium search-query" name="email" prompt="请输入活动名">
+      <button type="submit" class="btn">Search</button>
+    </form>
+  </h1>
+</div>
+
+<%= paginate @points_users %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:USER_ID) %></th>
+      <th><%= model_class.human_attribute_name(:USER_NAME) %></th>
+      <th><%= model_class.human_attribute_name(:POINTS) %></th>
+      <th><%= model_class.human_attribute_name(:USED_POINTS) %></th>
+      <th><%= model_class.human_attribute_name(:FROZEN_POINTS) %></th>
+      <th><%= model_class.human_attribute_name(:STATUS) %></th>
+      <th><%= model_class.human_attribute_name(:FROZEN_REASON) %></th>
+      <th><%= model_class.human_attribute_name(:FROZEN_TIME) %></th>
+      <th><%= model_class.human_attribute_name(:CONTACT_NAME) %></th>
+      <th><%= model_class.human_attribute_name(:CONTACT_ADDRESS) %></th>
+      <th><%= model_class.human_attribute_name(:CONTACT_NO) %></th>
+      <th><%= model_class.human_attribute_name(:ZIP_CODE) %></th>
+      <th><%= model_class.human_attribute_name(:STATE) %></th>
+      <th><%= model_class.human_attribute_name(:CITY) %></th>
+      <th><%= model_class.human_attribute_name(:VERIFY_EMAIL) %></th>
+      <th><%= model_class.human_attribute_name(:VERIFY_TIME) %></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @points_users.each do |points_user| %>
+      <tr>
+        <td><%= points_user.USER_ID %></td>
+        <td><%= points_user.USER_NAME %></td>
+        <td><%= points_user.POINTS %></td>
+        <td><%= points_user.USED_POINTS %></td>
+        <td><%= points_user.FROZEN_POINTS %></td>
+        <td><%= points_user.STATUS %></td>
+        <td><%= points_user.FROZEN_REASON %></td>
+        <td><%= points_user.FROZEN_TIME %></td>
+        <td><%= points_user.CONTACT_NAME %></td>
+        <td><%= points_user.CONTACT_ADDRESS %></td>
+        <td><%= points_user.CONTACT_NO %></td>
+        <td><%= points_user.ZIP_CODE %></td>
+        <td><%= points_user.STATE %></td>
+        <td><%= points_user.CITY %></td>
+        <td><%= points_user.VERIFY_EMAIL %></td>
+        <td><%= points_user.VERIFY_TIME %></td>
+        <td>
+          <% if points_user.EMAILED > 0 %>
+            <%= link_to "解除邮箱绑定", clear_points_user_path(points_user), :class => 'btn btn-danger clear-email', "data-id" => points_user.USER_ID  %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

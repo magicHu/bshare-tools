@@ -1,0 +1,29 @@
+<%= simple_form_for @points_user, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :USER_ID %>
+  <%= f.input :USER_NAME %>
+  <%= f.input :POINTS %>
+  <%= f.input :USED_POINTS %>
+  <%= f.input :FROZEN_POINTS %>
+  <%= f.input :STATUS %>
+  <%= f.input :FROZEN_REASON %>
+  <%= f.input :FROZEN_TIME %>
+  <%= f.input :CONTACT_NAME %>
+  <%= f.input :CONTACT_ADDRESS %>
+  <%= f.input :CONTACT_NO %>
+  <%= f.input :ZIP_CODE %>
+  <%= f.input :STATE %>
+  <%= f.input :CITY %>
+  <%= f.input :AVATAR %>
+  <%= f.input :EMAILED %>
+  <%= f.input :VERIFY_EMAIL %>
+  <%= f.input :VERIFY_TIME %>
+  <%= f.input :INVITE_CODE %>
+  <%= f.input :SOURCE_INVITE_CODE %>
+  <%= f.input :INVITE_REWARDED %>
+  <%= f.input :INSERT_TIME %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                points_users_path, :class => 'btn' %>
+  </div>
+<% end %>
