@@ -13,7 +13,7 @@ BsharePoints::Application.routes.draw do
 
     resources :ad_user_records do
       collection do
-        get "search"
+        match "search"
       end
     end
 
