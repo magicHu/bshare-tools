@@ -2,7 +2,8 @@
 class AdUserRecordsController < ApplicationController
   def index
     @ad = Ad.find(params[:ad_id])
-    @ad_user_records = AdUserRecord.where(:AD_ID => params[:ad_id]).page(params[:page])
+    @ad_user_records = AdUserRecord.where(:AD_ID =>
+  params[:ad_id]).page(params[:page])
     @has_get_points_record_count = AdUserRecord.where(:AD_ID => params[:ad_id], :TRANS_STATUS => 3).count
   end
 
@@ -24,13 +25,15 @@ class AdUserRecordsController < ApplicationController
     @repeat_user_ids = []
     @temp_user_ids = []
     @user_ids.split(/,/).each do |user_id|
-        if @temp_user_ids.include? user_id
-          @repeat_user_ids << user_id
+        if @ad_user_records.key?(user_id.to_i)
+          if @temp_user_ids.include? user_id
+            @repeat_user_ids << user_id
+          else
+            @temp_user_ids << user_id
+          end
         else
-          @temp_user_ids << user_id
+          @no_exist_user_ids << user_id
         end
-
-       @no_exist_user_ids << user_id unless @ad_user_records.key?(user_id.to_i)
     end
   end
 
@@ -48,7 +51,8 @@ class AdUserRecordsController < ApplicationController
 
   private
   def send_points_url(ad_user_record_ids)
-    args = { :uuid => uuid, :ts => Time.now.to_i * 1000, :ids => ad_user_record_ids.join(',') }
+    args = { :uuid =>
+    uuid, :ts => Time.now.to_i * 1000, :ids => ad_user_record_ids.join(',') }
     args[:secret] = sign(args, secret)
 
     "#{points_base_url}/api/refresAR.json?" + args.map {|key, value| "#{key}=#{value}"}.join('&')
