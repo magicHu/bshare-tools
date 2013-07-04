@@ -111,5 +111,5 @@ def replace_projects_chinease
   end
 end
 
-#extrac_projects_chinease
+extrac_projects_chinease
 #replace_projects_chinease
