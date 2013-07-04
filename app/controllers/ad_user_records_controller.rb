@@ -19,6 +19,11 @@ class AdUserRecordsController < ApplicationController
     @has_get_points_record_count = AdUserRecord.where(:AD_ID => params[:ad_id], :TRANS_STATUS => 3).count
 
     @send_points_url = send_points_url(@ad_user_records.values)
+
+    @no_exist_user_ids = []
+    @user_ids.split(/,/).each do |user_id|
+       @no_exist_user_ids << user_id unless @ad_user_records.key?(user_id.to_i)
+    end
   end
 
 

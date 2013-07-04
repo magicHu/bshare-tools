@@ -15,6 +15,10 @@
 记录数: <span class="badge badge-important"><%= @ad_user_records.count %></span>
 
 <%= link_to "给下面用户列表发积分", @send_points_url, class: "btn btn-danger", target: "_blank" %>
+
+<p class="pull-right">
+  没找到记录的用户ID列表 <span class="badge badge-important"><%= @no_exist_user_ids.join(',') %></span>
+</p>
 </div>
 
 
