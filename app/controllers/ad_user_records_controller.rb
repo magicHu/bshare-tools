@@ -21,7 +21,15 @@ class AdUserRecordsController < ApplicationController
     @send_points_url = send_points_url(@ad_user_records.values)
 
     @no_exist_user_ids = []
+    @repeat_user_ids = []
+    @temp_user_ids = []
     @user_ids.split(/,/).each do |user_id|
+        if @temp_user_ids.include? user_id
+          @repeat_user_ids << user_id
+        else
+          @temp_user_ids << user_id
+        end
+
        @no_exist_user_ids << user_id unless @ad_user_records.key?(user_id.to_i)
     end
   end
