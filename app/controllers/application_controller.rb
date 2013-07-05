@@ -2,6 +2,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  @@CACHE = {
+    AD: 'P:AD'
+  }
+
   def uuid
     #if Rails.env.production?
       "3ffabe88-9c95-4f7b-a6d4-a6c14c61ba03"
@@ -22,8 +26,18 @@ class ApplicationController < ActionController::Base
     "http://points.bshare.cn/"
   end
 
-  def refreshCache(cache_key)
-    HTTParty.get("#{points_base_url}/api/clearCached.json?uuid=#{uuid}&names=#{cache_key}")
+  def refresh_cache_url(cache_key)
+    "#{points_base_url}/api/clearCached.json?uuid=#{uuid}&names=#{cache_key}"
+  end
+
+  def refresh_cache(cache_key)
+    response = HTTParty.get(refresh_cache_url(cache_key))
+
+    if response.code == 200
+      result = MultiJson.load(response.body)
+      return unless result['isSuccess'] == 'F'
+    end
+    result['error']
   end
 
   def sign(params, secret)

@@ -184,6 +184,7 @@ DEPENDENCIES
   httparty
   jquery-rails
   kaminari
+  multi_json
   mysql2
   pry-nav
   pry-rails

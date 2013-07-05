@@ -35,6 +35,7 @@ class AdsController < ApplicationController
   def create
     @ad = Ad.new(params[:ad])
 
+    refresh_ad_cache(@ad)
     respond_to do |format|
       if @ad.save
         format.html { redirect_to @ad, notice: 'Ad was successfully created.' }
@@ -49,6 +50,7 @@ class AdsController < ApplicationController
   def update
     @ad = Ad.find(params[:id])
 
+    refresh_ad_cache(@ad)
     respond_to do |format|
       if @ad.update_attributes(params[:ad])
         format.html { redirect_to @ad, notice: 'ad was successfully updated.' }
@@ -64,9 +66,15 @@ class AdsController < ApplicationController
     @ad = Ad.find(params[:id])
     @ad.destroy
 
+    refresh_ad_cache(@ad)
     respond_to do |format|
       format.html { redirect_to ads_url, notice: 'ad was successfully destroy.' }
       format.json { head :no_content }
     end
+  end
+
+  def refresh_ad_cache(ad)
+    cache_key = "#{@@CACHE[:AD]}#{params[:cacheKey]}"
+    refresh_cache(cache_key)
   end
 end

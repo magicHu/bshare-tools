@@ -1,6 +1,8 @@
 # -*- encoding : utf-8 -*-
 BsharePoints::Application.routes.draw do
 
+  get "tools/index"
+  
   resources :ads do
     member do
       get "copy"

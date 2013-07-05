@@ -27,4 +27,8 @@ module ApplicationHelper
       "支付宝"
     end
   end
+
+  def trans_status_name(trans_status)
+    AdUserRecord.trans_status_enum.each{|k, v| return k if v == trans_status }
+  end
 end

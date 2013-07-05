@@ -31,4 +31,5 @@ class Ad < BsharePointsModel
   def cps?
     self.BILL_TYPE == 3
   end
+
 end
