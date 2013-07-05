@@ -15,26 +15,35 @@ class AdUserRecordsController < ApplicationController
   def search
     @ad = Ad.find(params[:ad_id])
 
-    @user_ids = params[:user_ids]
-    @ad_user_records = AdUserRecord.select([:USER_ID, :ID]).where(:AD_ID => params[:ad_id]).where("USER_ID in (#{@user_ids})").group("USER_ID").minimum(:ID)
-    @has_get_points_record_count = AdUserRecord.where(:AD_ID => params[:ad_id], :TRANS_STATUS => 3).count
+    @has_get_points_record_count = AdUserRecord.where(:AD_ID => params[:ad_id], :TRANS_STATUS => 3).count || 0
 
-    @send_points_url = send_points_url(@ad_user_records.values)
-
-    @no_exist_user_ids = []
-    @repeat_user_ids = []
-    @temp_user_ids = []
-    @user_ids.split(/,/).each do |user_id|
-        if @ad_user_records.key?(user_id.to_i)
-          if @temp_user_ids.include? user_id
-            @repeat_user_ids << user_id
+    if params[:search_field] == 'user_ids'
+      @user_ids = params[:keywords]
+      @ad_user_records = AdUserRecord.select([:USER_ID, :ID]).where(:AD_ID => params[:ad_id]).where("USER_ID in (#{@user_ids})").group("USER_ID").minimum(:ID)
+      
+      @send_points_url = send_points_url(@ad_user_records.values)
+      @no_exist_user_ids = []
+      @repeat_user_ids = []
+      @temp_user_ids = []
+      @user_ids.split(/,/).each do |user_id|
+          if @ad_user_records.key?(user_id.to_i)
+            if @temp_user_ids.include? user_id
+              @repeat_user_ids << user_id
+            else
+              @temp_user_ids << user_id
+            end
           else
-            @temp_user_ids << user_id
+            @no_exist_user_ids << user_id
           end
-        else
-          @no_exist_user_ids << user_id
-        end
+      end
+    elsif params[:search_field] == 'trans_status'
+      @ad_user_records = AdUserRecord.where(:AD_ID => params[:ad_id], :TRANS_STATUS => params[:keywords]).page(params[:page])
+
+      @send_points_url = send_points_url(@ad_user_records.map{|ad_user_record| ad_user_record.ID}) if @ad_user_records.count > 0
+      render action: "index"
+      return
     end
+
   end
 
 
@@ -45,7 +54,7 @@ class AdUserRecordsController < ApplicationController
     if @ad_user_record.save
       redirect_to ad_ad_user_records_url(@ad), notice: "create ad user record success"
     else
-      render_to action: new
+      render action: new
     end
   end
 

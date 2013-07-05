@@ -12,13 +12,21 @@
 </div>
 
 <form action="<%= search_ad_ad_user_records_path(@ad) %>" class="form-search" method="post">
-  <textarea name="user_ids" cols="100" rows="10" class="input-xxlarge"></textarea>
+  <select name="search_field">
+    <option value="user_ids">用户ID列表</option>
+    <option value="trans_status">状态</option>
+  </select>
+  <input type="text" class="input-xxlarge" name="keywords" />
   <button type="submit" class="btn btn-large btn-info">Search</button>
 </form>
 
 <div class="row">
-总参与记录数: <span class="badge badge-important"><%= @ad_user_records.total_count %></span>
-已获得奖励的用户数: <span class="badge badge-important"><%= @has_get_points_record_count %></span>
+  总参与记录数: <span class="badge badge-important"><%= @ad_user_records.total_count %></span>
+  已获得奖励的用户数: <span class="badge badge-important"><%= @has_get_points_record_count || 0 %></span>
+
+  <% if @send_points_url %>
+    <%= link_to "给下面用户列表发积分", @send_points_url, class: "btn btn-danger", target: "_blank" %>
+  <% end %>
 </div>
 
 <table class="table table-striped">
