@@ -5,13 +5,8 @@
   <%= f.input :FEED_TIME %>
   <%= f.input :JOIN_USERID %>
   <%= f.input :OTHER_USERID %>
-  <%= f.input :COMM %>
-  <%= f.input :TOTAL_PRICE %>
+  <%= f.input :TOTAL_PRICE, as: :decimal, label: "总价（元）" %>
   <%= f.input :OUT_BIZNO %>
-  <%= f.input :PAY_MODE %>
-  <%= f.input :ORDER_STATUS %>
-  <%= f.input :PAY_STATUS %>
-  <%= f.input :CONFIRMD %>
   <%= f.input :REMARK %>
   <%= f.input :INSERT_TIME %>
   <div class="form-actions">

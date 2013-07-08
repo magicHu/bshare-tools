@@ -36,11 +36,20 @@
     </tr>
   </thead>
   <tbody>
-    <% @ad_user_records.each do |user_id, id| %>
-      <tr>
-        <td><%= id %></td>
-        <td><%= user_id %></td>
-      </tr>
+    <% if @ad.cps? %>
+      <% @ad_user_records.each do |ad_user_record| %>
+        <tr>
+          <td><%= ad_user_record.ID %></td>
+          <td><%= ad_user_record.USER_ID %></td>
+        </tr>
+      <% end %>
+    <% else %>
+      <% @ad_user_records.each do |user_id, id| %>
+        <tr>
+          <td><%= id %></td>
+          <td><%= user_id %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

@@ -14,17 +14,28 @@ class AdFeedbacksController < ApplicationController
     @ad_feedback = AdFeedback.find(params[:id])
   end
 
-  def edit
-    @ad_feedback = AdFeedback.find(params[:id])
-  end
-
   def create
+    total_price = params[:ad_feedback].delete :TOTAL_PRICE
     @ad_feedback = AdFeedback.new(params[:ad_feedback])
+    binding.pry
+    @ad_feedback.TOTAL_PRICE = total_price.to_f * 100
 
-    if @ad_feedback.save
+    @ad_feedback.PAY_MODE = 10
+    @ad_feedback.ORDER_STATUS = 4
+    @ad_feedback.PAY_STATUS = 1
+    @ad_feedback.CONFIRMD = 1
+
+    @ad_user_record = @ad_feedback.to_ad_record
+
+    begin
+      AdFeedback.transaction do
+        @ad_feedback.save!
+        @ad_user_record.save!
+      end
+
       redirect_to ad_ad_feedbacks_url(@ad), notice: "create ad user record success"
-    else
-      render_to action: "new"
+    rescue Exception => e
+      render action: "new"
     end
   end
 
@@ -40,4 +51,5 @@ class AdFeedbacksController < ApplicationController
   def find_ad
     @ad = Ad.find(params[:ad_id])
   end
+
 end

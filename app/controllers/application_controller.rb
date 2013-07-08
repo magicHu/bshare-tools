@@ -31,6 +31,8 @@ class ApplicationController < ActionController::Base
   end
 
   def refresh_cache(cache_key)
+    @refresh_cache_url = refresh_cache_url(cache_key)
+=begin
     response = HTTParty.get(refresh_cache_url(cache_key))
 
     if response.code == 200
@@ -38,6 +40,7 @@ class ApplicationController < ActionController::Base
       return unless result['isSuccess'] == 'F'
     end
     result['error']
+=end
   end
 
   def sign(params, secret)
