@@ -34,9 +34,10 @@ end
 
 @files = {
   #"/home/magic/git/bshare/bshare_button/src/main/java" => "button_java.properties", 
-  "/home/magic/git/bshare/bshare_button/src/main/webapp/jsp" => ["/home/magic/git/bshare/bshare_button/src/main/resources/button_jsp.properties.native", "/home/magic/git/bshare/bshare_button/src/main/resources/MessageResources_zh.properties.native"]
+  #{}"/home/magic/git/bshare/bshare_button/src/main/webapp/jsp" => ["/home/magic/git/bshare/bshare_button/src/main/resources/button_jsp.properties.native", "/home/magic/git/bshare/bshare_button/src/main/resources/MessageResources_zh.properties.native"]
   #"/home/magic/git/bshare/bshare_points/src/main/java" => "points_java.properties",
   #{}"/home/magic/git/bshare/bshare_points/src/main/webapp/jsp" => "points_jsp.properties"
+  "/home/magic/git/bshare/bshare_parent/static_root/b" => "button_js.properties"
 }
 
 def extrac_projects_chinease
@@ -127,5 +128,5 @@ def replace_projects_chinease
   end
 end
 
-#extrac_projects_chinease
-replace_projects_chinease
+extrac_projects_chinease
+#replace_projects_chinease
