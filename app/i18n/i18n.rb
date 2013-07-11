@@ -37,7 +37,8 @@ end
   #{}"/home/magic/git/bshare/bshare_button/src/main/webapp/jsp" => ["/home/magic/git/bshare/bshare_button/src/main/resources/button_jsp.properties.native", "/home/magic/git/bshare/bshare_button/src/main/resources/MessageResources_zh.properties.native"]
   #"/home/magic/git/bshare/bshare_points/src/main/java" => "points_java.properties",
   #{}"/home/magic/git/bshare/bshare_points/src/main/webapp/jsp" => "points_jsp.properties"
-  "/home/magic/git/bshare/bshare_parent/static_root/b" => "button_js.properties"
+  #{}"/home/magic/git/bshare/bshare_parent/static_root/b" => "button_js.properties"
+  "/home/magic/git/bshare/bshare_website/src/main/webapp" => "/home/magic/git/bshare/bshare_website/src/main/resources/MessageResources_zh.properties.native"
 }
 
 def extrac_projects_chinease
@@ -86,13 +87,19 @@ def replace_chinease(file_name, messages)
   File.open(new_file_name, 'w') do |new_file|
     File.open(file_name).each do |line| 
       unless line =~ @COMMENTS_PATTERN
+
+      line_temp = nil
       line.scan(@CHINESE_PATTERN).each do |chinese|
-          #binding.pry
+          if file_name.end_with? 'main.jsp'
+          #  binding.pry
+          end
+
           unless messages[chinese].blank?
+            #binding.pry
             is_replace = true
 
             if file_name.end_with?('.jsp')
-              line.gsub!(/#{chinese}/, %Q{<s:text name='#{messages[chinese]}'/>})
+              line.sub!(/#{chinese}/, %Q{<s:text name='#{messages[chinese]}'/>})
             elsif file_name.end_with?('.java')
               line.gsub!(/#{chinese}/, %Q{getText("#{messages[chinese]}")})
             end
@@ -128,5 +135,5 @@ def replace_projects_chinease
   end
 end
 
-extrac_projects_chinease
-#replace_projects_chinease
+#extrac_projects_chinease
+replace_projects_chinease
