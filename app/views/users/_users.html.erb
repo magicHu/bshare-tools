@@ -1,0 +1,23 @@
+<%- model_class = User -%>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:USER_ID) %></th>
+      <th><%= model_class.human_attribute_name(:NAME) %></th>
+      <th><%= model_class.human_attribute_name(:LOGIN_ID) %></th>
+      <th><%= model_class.human_attribute_name(:PASSWORD) %></th>
+      <th><%= model_class.human_attribute_name(:EMAIL) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.USER_ID %></td>
+        <td><%= user.NAME %></td>
+        <td><%= user.LOGIN_ID %></td>
+        <td><%= user.PASSWORD %></td>
+        <td><%= user.EMAIL %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

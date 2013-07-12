@@ -1,6 +1,10 @@
 # -*- encoding : utf-8 -*-
 BsharePoints::Application.routes.draw do
 
+  get "users/index"
+
+  get "users/search"
+
   get "tools/index"
   
   resources :ads do
